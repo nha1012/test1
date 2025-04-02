@@ -3,79 +3,92 @@ import './App.css'
 
 function App() {
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Single graphics card driver versions
+  // GTX 750 Ti driver versions
   const driverVersions = [
     {
       id: 1,
-      version: '546.33',
-      releaseDate: '2024-03-25',
-      size: '768 MB',
+      version: '474.84',
+      releaseDate: '2024-01-24',
+      size: '516 MB',
       type: 'Game Ready',
       changes: [
-        'DLSS 3.5 support',
-        'Fixed memory leak in Vulkan applications',
-        'Performance improvements in DX12 games',
-        'New encoder features for streamers'
+        'General stability improvements',
+        'Security updates',
+        'Performance optimizations for legacy games',
+        'Fixed display driver crashes'
       ],
       minRequirements: {
-        os: ['Windows 10 64-bit', 'Windows 11'],
+        os: ['Windows 7 64-bit', 'Windows 10 64-bit'],
         cpu: 'Intel/AMD 64-bit processor',
-        ram: '4GB'
+        ram: '2GB'
       },
       sha256: 'e7c41d726b2421b1092c6d0850c1a3c558468507a12951c51d89c3f86d95c4dd'
     },
     {
       id: 2,
-      version: '546.29',
-      releaseDate: '2024-03-10',
-      size: '765 MB',
-      type: 'Studio',
+      version: '473.81',
+      releaseDate: '2023-12-05',
+      size: '512 MB',
+      type: 'Game Ready',
       changes: [
-        'Optimized for Adobe Creative Suite 2024',
-        'CUDA 12.4 support',
-        'Bug fixes for multi-display setups',
-        'Improved power management'
+        'Improved compatibility with Windows 10',
+        'Bug fixes for older DirectX games',
+        'Enhanced power management',
+        'Fixed screen flickering issues'
       ],
       minRequirements: {
-        os: ['Windows 10 64-bit', 'Windows 11'],
+        os: ['Windows 7 64-bit', 'Windows 10 64-bit'],
         cpu: 'Intel/AMD 64-bit processor',
-        ram: '4GB'
+        ram: '2GB'
       },
       sha256: '8f2e41d726b2421b1092c6d0850c1a3c558468507a12951c51d89c3f86d95c4ff'
     },
     {
       id: 3,
-      version: '546.01',
-      releaseDate: '2024-02-28',
-      size: '762 MB',
+      version: '472.98',
+      releaseDate: '2023-10-18',
+      size: '510 MB',
       type: 'Game Ready',
       changes: [
-        'Support for Dragon\'s Dogma 2',
-        'Ray tracing optimizations',
-        'Fixed GPU utilization reporting',
-        'Updated NVENC encoder'
+        'General bug fixes',
+        'Improved stability in legacy applications',
+        'Fixed GPU fan control issues',
+        'Better memory management'
       ],
       minRequirements: {
-        os: ['Windows 10 64-bit', 'Windows 11'],
+        os: ['Windows 7 64-bit', 'Windows 10 64-bit'],
         cpu: 'Intel/AMD 64-bit processor',
-        ram: '4GB'
+        ram: '2GB'
       },
       sha256: 'a9c41d726b2421b1092c6d0850c1a3c558468507a12951c51d89c3f86d95c4e1'
     }
   ];
 
   const downloadDriver = (version) => {
-    setMessage('Phong ngu, Fuck Me!!!');
+    setIsLoading(true);
+    setMessage('Loading...');
+    
+    setTimeout(() => {
+      setIsLoading(false);
+      setMessage('Con Phong, Fuck Me!!');
+    }, 1000);
   };
 
   return (
     <div className="container">
       <header>
-        <h1>NVIDIA RTX 40 Series Driver Hub</h1>
+        <h1>NVIDIA GTX 750 Ti Driver Hub</h1>
       </header>
 
-      {message && (
+      {isLoading && (
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+        </div>
+      )}
+
+      {message && !isLoading && (
         <div className="message">
           {message}
         </div>
